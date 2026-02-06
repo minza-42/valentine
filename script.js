@@ -38,14 +38,23 @@ function moveButton() {
   const maxX = window.innerWidth - noBtn.offsetWidth - padding;
   const maxY = window.innerHeight - noBtn.offsetHeight - padding;
 
-  let x, y, overlap, tooCenter, tries = 0;
+  let x,
+    y,
+    overlap,
+    tooCenter,
+    tries = 0;
   const centerX = window.innerWidth / 2;
   const centerY = window.innerHeight / 2;
   do {
     x = padding + Math.random() * (maxX - padding);
     y = padding + Math.random() * (maxY - padding);
     // Check for overlap with YES button (precise bounding box)
-    const noRect = {left: x, right: x + noBtn.offsetWidth, top: y, bottom: y + noBtn.offsetHeight};
+    const noRect = {
+      left: x,
+      right: x + noBtn.offsetWidth,
+      top: y,
+      bottom: y + noBtn.offsetHeight,
+    };
     overlap = !(
       noRect.right < yesRect.left ||
       noRect.left > yesRect.right ||
@@ -54,8 +63,10 @@ function moveButton() {
     );
     // Avoid the center area (where YES is likely located)
     tooCenter =
-      Math.abs(noRect.left + noBtn.offsetWidth / 2 - centerX) < yesBtn.offsetWidth / 1.5 &&
-      Math.abs(noRect.top + noBtn.offsetHeight / 2 - centerY) < yesBtn.offsetHeight / 1.5;
+      Math.abs(noRect.left + noBtn.offsetWidth / 2 - centerX) <
+        yesBtn.offsetWidth / 1.5 &&
+      Math.abs(noRect.top + noBtn.offsetHeight / 2 - centerY) <
+        yesBtn.offsetHeight / 1.5;
     tries++;
   } while ((overlap || tooCenter) && tries < 50);
 
@@ -68,11 +79,24 @@ function moveButton() {
   // Double-check after rendering: if any part is outside, snap it in
   const rect = noBtn.getBoundingClientRect();
   let adjust = false;
-  let newLeft = x, newTop = y;
-  if (rect.left < 0) { newLeft = padding; adjust = true; }
-  if (rect.top < 0) { newTop = padding; adjust = true; }
-  if (rect.right > window.innerWidth) { newLeft = window.innerWidth - rect.width - padding; adjust = true; }
-  if (rect.bottom > window.innerHeight) { newTop = window.innerHeight - rect.height - padding; adjust = true; }
+  let newLeft = x,
+    newTop = y;
+  if (rect.left < 0) {
+    newLeft = padding;
+    adjust = true;
+  }
+  if (rect.top < 0) {
+    newTop = padding;
+    adjust = true;
+  }
+  if (rect.right > window.innerWidth) {
+    newLeft = window.innerWidth - rect.width - padding;
+    adjust = true;
+  }
+  if (rect.bottom > window.innerHeight) {
+    newTop = window.innerHeight - rect.height - padding;
+    adjust = true;
+  }
   if (adjust) {
     noBtn.style.left = `${Math.max(padding, Math.min(newLeft, maxX))}px`;
     noBtn.style.top = `${Math.max(padding, Math.min(newTop, maxY))}px`;
