@@ -264,7 +264,7 @@ button:active {
 }
 
 #warning img {
-  width: 600px;
+  width: 500px;
   border-radius: 20px;
   display: block;
   margin: 10px auto;
@@ -280,4 +280,37 @@ button:active {
     opacity: 1;
     transform: scale(1);
   }
+}
+
+.refresh-btn {
+  margin-top: 30px;
+  padding: 18px 45px;
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, #ffb6b9 0%, #ff4d6d 100%);
+  color: #fff;
+  border: 2.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  font-family: "Pacifico", cursive;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow:
+    0 12px 40px 0 rgba(255, 77, 109, 0.5),
+    0 2px 0 rgba(255, 255, 255, 0.5) inset;
+  transition: all 0.3s ease;
+  text-shadow:
+    0 2px 8px rgba(255, 77, 109, 0.5),
+    0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.refresh-btn:hover {
+  transform: scale(1.1) rotate(-2deg);
+  box-shadow:
+    0 18px 48px 0 rgba(255, 77, 109, 0.7),
+    0 2px 0 rgba(255, 255, 255, 0.5) inset;
+  filter: brightness(1.1) drop-shadow(0 0 20px rgba(255, 77, 109, 0.8));
+}
+
+.refresh-btn:active {
+  transform: scale(0.98);
+  filter: brightness(0.95);
 }
