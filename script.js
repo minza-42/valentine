@@ -7,7 +7,7 @@ noBtn.addEventListener("mouseenter", moveButton);
 function moveButton() {
   noAttempts++;
 
-  // Efter 5 försök, visa varning med kattbild
+  // After 5 attempts, show warning with cat image
   if (noAttempts >= 5) {
     warning.classList.remove("hidden");
     warning.style.animation = "fadeIn 0.6s ease forwards";
