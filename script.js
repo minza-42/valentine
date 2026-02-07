@@ -15,8 +15,8 @@ function moveButton() {
     return;
   }
 
-  const x = Math.random() * 250;
-  const y = Math.random() * 120;
+  const x = Math.random() * 400;
+  const y = Math.random() * 400;
 
   noBtn.style.left = `${x}px`;
   noBtn.style.top = `${y}px`;
